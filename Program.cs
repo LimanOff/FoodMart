@@ -1,3 +1,6 @@
+using FoodMart.Models.Infrastucture;
+using Microsoft.EntityFrameworkCore;
+
 namespace FoodMart
 {
     public class Program
@@ -7,6 +10,10 @@ namespace FoodMart
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Services.AddControllersWithViews();
+
+            var db = builder.Configuration.GetConnectionString("Db");
+
+            builder.Services.AddDbContext<MainContext>(options => options.UseSqlServer(db));
 
             var app = builder.Build();
 
