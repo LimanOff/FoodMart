@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "Регистрация";
+    Layout = "/Views/Shared/_LayoutWithoutButtons.cshtml";
+}
+
+<form class="RegAuthForm" method="post">
+    <h1>Регистрация</h1>
+
+    <input name="login" class="form-control" type="text" placeholder="Логин"/>
+    <input name="password" class="form-control" type="text" placeholder="Пароль" />
+
+    <input class="btn btn-primary" type="submit" value="Зарегистрироваться" formaction="/Home/Registration" />
+    <input class="btn btn-primary" type="submit" value="Уже зарегистрированы?" formaction="/Home/LoadAuthForm" />
+</form>
