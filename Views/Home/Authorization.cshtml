@@ -1,14 +1,14 @@
 ﻿@{
     ViewBag.Title = "Авторизация";
-    Layout = "/Views/Shared/_LayoutWithoutButtons.cshtml";
+    Layout = "/Views/Shared/_Layout.cshtml";
 }
 
-<form class="RegAuthForm" method="post">
+<form class="RegAuthForm" asp-action="Authorization" method="post">
     <h1>Авторизация</h1>
 
     <input name="login" class="form-control" type="text" placeholder="Логин" />
     <input name="password" class="form-control" type="text" placeholder="Пароль" />
 
-    <input class="btn btn-primary" type="submit" value="Войти" formaction="/Home/Authorization" />
-    <input class="btn btn-primary" type="submit" value="Не зарегистрированы?" formaction="/Home/LoadRegForm" />
+    <input class="btn btn-primary" type="submit" value="Войти" />
+    <a class="btn btn-primary mt-5" asp-action="Registration">Не зарегистрированы?</a>
 </form>

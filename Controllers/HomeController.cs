@@ -55,17 +55,5 @@ namespace FoodMart.Controllers
             }
             return View();
         }
-
-
-        [HttpPost]
-        public IActionResult LoadAuthForm()
-        {
-            return RedirectToAction("Authorization");
-        }
-        [HttpPost]
-        public IActionResult LoadRegForm()
-        {
-            return RedirectToAction("Registration");
-        }
     }
 }
