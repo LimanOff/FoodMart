@@ -5,6 +5,7 @@ namespace FoodMart
 {
     public class Program
     {
+        public static User CurrentUser { get; set; }
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);

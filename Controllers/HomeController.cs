@@ -1,9 +1,17 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FoodMart.Models.Infrastucture;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace FoodMart.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly MainContext _context;
+        public HomeController(MainContext context)
+        {
+            _context = context;
+        }
+
         public IActionResult Index() => View();
 
         [HttpGet]
@@ -12,10 +20,19 @@ namespace FoodMart.Controllers
         [HttpPost]
         public IActionResult Registration(string login, string password)
         {
-            if(login != null && password != null)
+            if (login != null && password != null)
             {
-                string authData = $"Login: {login}   Password: {password}";
-                return Content(authData);
+                User u = new() { Login = login, Password = password };
+
+                if (_context.Users.FirstOrDefault(u => u.Login == login && u.Password == password) == null)
+                {
+                    _context.Users.Add(u);
+                    _context.SaveChanges();
+
+                    Program.CurrentUser = u;
+
+                    return RedirectToAction("Index");
+                }
             }
             return View();
         }
@@ -28,8 +45,13 @@ namespace FoodMart.Controllers
         {
             if (login != null && password != null)
             {
-                string authData = $"Login: {login}   Password: {password}";
-                return Content(authData);
+                User u = _context.Users.FirstOrDefault(u => u.Login == login && u.Password == password);
+
+                if (u != null)
+                {
+                    Program.CurrentUser = u;
+                    return RedirectToAction("Index");
+                }
             }
             return View();
         }
