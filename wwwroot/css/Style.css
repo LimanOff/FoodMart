@@ -41,16 +41,32 @@ header {
     display: flex;
     align-items: center;
 }
-    header > .TitleOfStore {
-        color: #FFF;
+    header .Header-title {
         margin-left: 50px;
-        font-family: 'Kavoon', serif;
-        font-size: 35px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-        margin-left: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
+        .Header-title .TitleOfStore {
+            color: #FFF;
+            font-family: 'Kavoon', serif;
+            font-size: 35px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+        }
+    header .Header-buttons{
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+        .Header-buttons *{
+            margin-right: 50px;
+        }
+        .Header-buttons img {
+            width: 50px;
+        }
 
 .RegAuthForm {
     display: flex;

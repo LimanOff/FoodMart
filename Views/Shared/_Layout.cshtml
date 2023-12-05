@@ -8,8 +8,43 @@
     <body>
         <div class="Grid">
             <header>
-                <h1 class="TitleOfStore">FoodMart</h1>
-                <!-- TODO Сделать кнопки -->
+                <div class="Header-title">
+                    @if(Program.CurrentUser != null)
+                    {
+                        <a asp-controller="Home" asp-action="Index"><h1 class="TitleOfStore">FoodMart</h1></a>
+                    }
+                    else
+                    {
+                        <h1 class="TitleOfStore">FoodMart</h1>
+                    }
+                </div>
+
+                @if(Program.CurrentUser != null)
+                {
+                    <div class="Header-buttons">
+                        @if (ViewBag.CartPage != true)
+                        {
+                            <a asp-controller="Home" asp-action="Cart"> <img src="~/img/icons/Cart.png" /> </a>
+                        }
+                        else
+                        {
+                            <a asp-controller="Home" asp-action="Cart"> <img src="~/img/selected-icons/Selected_Cart.png" /> </a>
+                        }
+
+                        @if (ViewBag.AccountPage != true)
+                        {
+                            <a> <img src="~/img/icons/Account.png" /> </a>
+                        }
+                        else
+                        {
+                            <a> <img src="~/img/selected-icons/Selected_Account.png" /> </a>
+                        }
+                    </div>
+                }
+                else
+                {
+                    <!-- TODO Сделать кнопки -->
+                }
             </header>
 
             <div class="GridBody">

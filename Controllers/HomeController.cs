@@ -55,5 +55,20 @@ namespace FoodMart.Controllers
             }
             return View();
         }
+
+
+        [HttpGet]
+        public IActionResult Cart()
+        {
+            ViewBag.CartPage = true;
+            return View(); 
+        }
+
+        [HttpGet]
+        public IActionResult LogOut()
+        {
+            Program.CurrentUser = null;
+            return RedirectToAction("Registration");
+        }
     }
 }
