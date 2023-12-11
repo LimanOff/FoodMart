@@ -31,19 +31,8 @@
                             <a asp-controller="Home" asp-action="Cart"> <img src="~/img/selected-icons/Selected_Cart.png" /> </a>
                         }
 
-                        @if (ViewBag.AccountPage != true)
-                        {
-                            <a> <img src="~/img/icons/Account.png" /> </a>
-                        }
-                        else
-                        {
-                            <a> <img src="~/img/selected-icons/Selected_Account.png" /> </a>
-                        }
+                        <a asp-controller="Home" asp-action="LogOut"> <img class="LogOut-button" src="~/img/icons/LogOut.png" /> </a>
                     </div>
-                }
-                else
-                {
-                    <!-- TODO Сделать кнопки -->
                 }
             </header>
 

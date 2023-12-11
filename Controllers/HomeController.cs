@@ -56,7 +56,6 @@ namespace FoodMart.Controllers
             return View();
         }
 
-
         [HttpGet]
         public IActionResult Cart()
         {
