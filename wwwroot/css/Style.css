@@ -79,3 +79,31 @@ header {
         text-align: center;
         width: 250px;
     }
+
+.IndexBody{
+    display: flex;
+}
+    .ProductsList {
+        display: flex;
+        flex-wrap: wrap;
+        width: 80%;
+    }
+        .ProductItem {
+            margin: 50px;
+            width: 220px;
+            display: inline-flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .ProductItem > img{
+            width: 180px;
+        }
+            .ProductItem > .BuyButtonIMG{
+                width: 50px;
+            }
+    .Filters {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                }

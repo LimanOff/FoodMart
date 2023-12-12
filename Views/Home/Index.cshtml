@@ -1,7 +1,45 @@
-﻿@page
-@model FoodMart.Views.Home.IndexModel
+﻿@model FoodMart.Models.Infrastucture.MainContext;
 @{
     Layout = "/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Главная";
 }
+<div class="IndexBody">
+    <div class="ProductsList">
+        @foreach(var product in Model.Products)
+        {
+            <form method="post">
+                <div class="ProductItem">
+                    <img src="@product.ImageLink" />
+                    <h2 >@product.Name</h2>
+                    <h3>@product.Cost ₽</h3>
+
+                    @{
+                        var carts = Model.Carts.ToList();
+                        bool IsPurchased = carts.FirstOrDefault(x => x.Product == product) != null;
+                    }
+                    
+                    <input name="productName" hidden class="form-control form-control-sm" value="@product.Name" type="text" />
+
+                    
+                     @if (!IsPurchased)
+                    {
+                        <input type="image" src="~/img/buttons/Buy.png" alt="Buy" class="BuyButtonIMG" />
+                    }
+                    else
+                    {
+                        <input asp-action="RemoveFromCartINDEX" type="image" src="~/img/buttons/AlreadyBuy.png" alt="Buy" class="BuyButtonIMG" />
+                    }
+                </div>
+            </form>
+        }
+    </div>
+    <div class="Filters">
+        <h1>Фильтры</h1>
+        <p><input type="radio" /> По умолчанию </p>
+        <p><input type="radio" /> По убыванию цены </p>
+        <p><input type="radio" /> По возрастанию цены </p>
+        <p><input type="radio" /> По алфавиту (А-Я) </p>
+        <p><input type="radio" /> По алфавиту (Я-А) </p>
+    </div>
+</div>
 
