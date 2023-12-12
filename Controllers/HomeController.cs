@@ -12,7 +12,50 @@ namespace FoodMart.Controllers
             _context = context;
         }
 
-        public IActionResult Index() => View();
+        [HttpGet]
+        public IActionResult Index()
+        {
+            return View(_context);
+        }
+
+        [HttpPost]
+        public IActionResult Index(string productName)
+        {
+            var product = _context.Products.First(x => x.Name == productName);
+
+            Cart cart = new Cart()
+            {
+                Product = product,
+                UserId = Program.CurrentUser.Id
+            };
+
+            _context.Carts.Add(cart);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public IActionResult RemoveFromCartINDEX(string productName)
+        {
+            var product = _context.Carts.First(x => x.Product.Name == productName);
+
+            _context.Carts.Remove(product);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public IActionResult RemoveFromCartCART(string productName)
+        {
+            var product = _context.Carts.First(x => x.Product.Name == productName);
+
+            _context.Carts.Remove(product);
+            _context.SaveChanges();
+
+            return RedirectToAction("Cart");
+        }
 
         [HttpGet]
         public IActionResult Registration() => View();
@@ -60,7 +103,7 @@ namespace FoodMart.Controllers
         public IActionResult Cart()
         {
             ViewBag.CartPage = true;
-            return View(); 
+            return View(_context); 
         }
 
         [HttpGet]

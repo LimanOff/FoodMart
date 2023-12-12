@@ -1,7 +1,28 @@
-﻿@{
+﻿@model FoodMart.Models.Infrastucture.MainContext;
+@{
     ViewBag.CartPage = true;
     ViewBag.Title = "Корзина";
     Layout = "/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Корзина</h1>
+<div class="IndexBody">
+    <div class="ProductsList">
+        @foreach (var cart in Model.Carts)
+        {
+            
+            var product = Model.Products.First(x => x.Id == cart.ProductId);
+
+            <form method="post">
+                <div class="ProductItem">
+                    <img src="@product.ImageLink" />
+                    <h2>@product.Name</h2>
+                    <h3>@product.Cost ₽</h3>
+
+                    <input name="productName" hidden class="form-control form-control-sm" value="@product.Name" type="text" />
+
+                    <input asp-action="RemoveFromCartCART" type="image" src="~/img/buttons/AlreadyBuy.png" alt="Buy" class="BuyButtonIMG" />
+                </div>
+            </form>
+        }
+    </div>
+</div>

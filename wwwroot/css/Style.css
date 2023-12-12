@@ -86,7 +86,9 @@ header {
     .ProductsList {
         display: flex;
         flex-wrap: wrap;
-        width: 80%;
+        width: 700%;
+        margin-left: auto;
+        margin-right: auto;
     }
         .ProductItem {
             margin: 50px;
@@ -102,8 +104,3 @@ header {
             .ProductItem > .BuyButtonIMG{
                 width: 50px;
             }
-    .Filters {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                }
