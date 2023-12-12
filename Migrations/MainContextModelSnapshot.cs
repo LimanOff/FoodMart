@@ -66,6 +66,43 @@ namespace FoodMart.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Products");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Cost = 100m,
+                            ImageLink = "https://klike.net/uploads/posts/2022-09/1662040170_j-50.jpg",
+                            Name = "Яблоко"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Cost = 150m,
+                            ImageLink = "https://media.baamboozle.com/uploads/images/119504/1666966541_1034289_gif-url.jpeg",
+                            Name = "Банан"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Cost = 500m,
+                            ImageLink = "https://cojo.ru/wp-content/uploads/2023/01/granat-bez-kostochek-1.webp",
+                            Name = "Гранат"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Cost = 400m,
+                            ImageLink = "https://ketokotleta.ru/wp-content/uploads/3/d/8/3d82223993fa9b0adf0be050b0e682e7.png",
+                            Name = "Груша"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Cost = 300m,
+                            ImageLink = "https://catherineasquithgallery.com/uploads/posts/2021-03/1614548312_46-p-apelsin-na-belom-fone-61.jpg",
+                            Name = "Апельсин"
+                        });
                 });
 
             modelBuilder.Entity("FoodMart.Models.Infrastucture.User", b =>
